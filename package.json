@@ -1,0 +1,69 @@
+{
+  "name": "github-pr-dashboard-extension",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.13.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint . --max-warnings 0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
+    "check:boundaries": "tsx scripts/check-boundaries.ts",
+    "check:manifest": "tsx scripts/check-manifest.ts",
+    "generate": "tsx scripts/generate-component.ts",
+    "verify": "pnpm typecheck && pnpm lint && pnpm check:boundaries && pnpm test && pnpm build && pnpm check:manifest",
+    "prepare": "husky",
+    "assets": "tsx scripts/generate-sounds.ts && tsx scripts/generate-icons.ts",
+    "e2e:smoke": "tsx scripts/e2e-smoke.ts"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --max-warnings 0",
+      "prettier --check"
+    ],
+    "*.{json,md,html,css,yml}": [
+      "prettier --check"
+    ]
+  },
+  "dependencies": {
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "styled-components": "^6.5.3",
+    "zustand": "^5.0.15"
+  },
+  "devDependencies": {
+    "@crxjs/vite-plugin": "^3.0.0",
+    "@eslint/js": "^10.0.1",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
+    "@types/chrome": "^0.3.0",
+    "@types/node": "^24.19.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "@vitest/coverage-v8": "^5.0.2",
+    "eslint": "^10.11.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-typescript": "^4.4.5",
+    "eslint-plugin-import-x": "^4.17.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.12.0",
+    "husky": "^9.1.7",
+    "jsdom": "^30.1.1",
+    "lint-staged": "^17.6.0",
+    "playwright-core": "1.63.0",
+    "prettier": "^3.9.9",
+    "tsx": "^4.23.15",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.70.1",
+    "vite": "^8.3.1",
+    "vitest": "^5.0.2"
+  }
+}

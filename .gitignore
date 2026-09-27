@@ -1,0 +1,10 @@
+node_modules
+dist
+coverage
+*.local
+.DS_Store
+*.pem
+*.crx
+
+# Local scratch files that may contain secrets
+test.json
